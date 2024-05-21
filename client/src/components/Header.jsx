@@ -4,7 +4,6 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
-
 import { useEffect, useState } from 'react';
 
 export default function Header() {
@@ -102,7 +101,7 @@ export default function Header() {
             <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
-          <Link to='/sign-in'>
+          <Link to='/Signin'>
             <Button gradientDuoTone='purpleToBlue' outline>
               Sign In
             </Button>
