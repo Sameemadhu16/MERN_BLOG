@@ -24,12 +24,15 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
     };
     getUser();
   }, [comment]);
-
+ 
+  //hadleEdit
   const handleEdit = () => {
     setIsEditing(true);
     setEditedContent(comment.content);
   };
 
+
+  //handleSave
   const handleSave = async () => {
     try {
       const res = await fetch(`/api/comment/editComment/${comment._id}`, {
