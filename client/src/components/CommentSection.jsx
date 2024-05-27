@@ -98,7 +98,7 @@ export default function CommentSection({ postId }) {
     setShowModal(false);
     try {
       if (!currentUser) {
-        navigate('/sign-in');
+        navigate('/Signin');
         return;
       }
       const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
@@ -188,6 +188,8 @@ export default function CommentSection({ postId }) {
           ))}
         </>
       )}
+
+ 
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
