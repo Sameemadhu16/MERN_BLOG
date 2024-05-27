@@ -56,10 +56,12 @@ export default function CommentSection({ postId }) {
     getComments();
   }, [postId]);
 
+
+  //handlelike function
   const handleLike = async (commentId) => {
     try {
       if (!currentUser) {
-        navigate('/sign-in');
+        navigate('/Signin');
         return;
       }
       const res = await fetch(`/api/comment/likeComment/${commentId}`, {
