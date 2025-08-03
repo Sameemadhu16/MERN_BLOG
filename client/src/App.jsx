@@ -8,9 +8,11 @@ import About from './pages/about'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import PrivateRoute from './components/PrivateRoute'
-import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute copy'
+import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
 import CreatePost from './pages/CreatePost'
 import UpdatePost from './pages/UpdatePost'
+import CreateAdd from './pages/CreateAdd'
+import UpdateAdd from './pages/UpdateAdd'
 import PostPage from './pages/PostPage'
 import ScrollToTop from './components/ScrollToTop'
 import Search from './pages/Search'
@@ -30,12 +32,14 @@ export default function App() {
         <Route path="/Signin" element={<Signin />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/search" element={<Search />} />
-        <Route elememt={<PrivateRoute/>}>
+        <Route element={<PrivateRoute/>}>
             <Route path="/DashBoard" element={<DashBoard />} /> 
         </Route>
-        <Route elememt={<OnlyAdminPrivateRoute/>}>
+        <Route element={<OnlyAdminPrivateRoute/>}>
             <Route path="/create-post" element={<CreatePost />} /> 
-            <Route path="/update-post/:postId" element={<UpdatePost />} /> 
+            <Route path="/update-post/:postId" element={<UpdatePost />} />
+            <Route path="/create-add" element={<CreateAdd />} />
+            <Route path="/update-add/:addId" element={<UpdateAdd />} />
         </Route>
         <Route path='/post/:postSlug' element={<PostPage/>} />
       </Routes>
