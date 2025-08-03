@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import CallToAction from '../components/CallToAction';
 import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
+import BannerAd from '../components/BannerAd';
 
 
 
@@ -103,6 +104,13 @@ export default function PostPage() {
         className='p-3 max-w-2xl mx-auto w-full post-content'
         dangerouslySetInnerHTML={{ __html: post && post.content }}
       ></div>
+      
+      {/* Banner Advertisement */}
+      <div className='flex justify-center my-8'>
+        <div className='max-w-4xl w-full'>
+          <BannerAd category='banner' />
+        </div>
+      </div>
       
       <div className='max-w-4xl mx-auto w-full'>
           <CallToAction/>

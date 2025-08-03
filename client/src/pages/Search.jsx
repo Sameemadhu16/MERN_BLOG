@@ -2,6 +2,7 @@ import { Button, Select, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PostCard from '../components/PostCard';
+import SidebarAd from '../components/SidebarAd';
 
 export default function Search() {
   const [sidebarData, setSidebarData] = useState({
@@ -140,6 +141,11 @@ export default function Search() {
             Apply Filters
           </Button>
         </form>
+        
+        {/* Sidebar Advertisement */}
+        <div className='mt-8'>
+          <SidebarAd category='sidebar' />
+        </div>
       </div>
       <div className='w-full'>
         <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 '>

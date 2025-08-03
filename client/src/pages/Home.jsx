@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import CallToAction from '../components/CallToAction';
 import { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard';
+import AdCard from '../components/AdCard';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [featuredAds, setFeaturedAds] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -13,6 +15,21 @@ export default function Home() {
       setPosts(data.posts);
     };
     fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    const fetchFeaturedAds = async () => {
+      try {
+        const res = await fetch('/api/add/getAdds?limit=3');
+        const data = await res.json();
+        if (res.ok) {
+          setFeaturedAds(data.adds);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchFeaturedAds();
   }, []);
   return (
     <div>
@@ -32,6 +49,20 @@ export default function Home() {
       <div className='p-3 bg-amber-100 dark:bg-slate-700'>
         <CallToAction />
       </div>
+
+      {/* Featured Advertisements Section */}
+      {featuredAds && featuredAds.length > 0 && (
+        <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
+          <div className='flex flex-col gap-6'>
+            <h2 className='text-2xl font-semibold text-center'>Featured Advertisements</h2>
+            <div className='flex flex-wrap gap-4 justify-center'>
+              {featuredAds.map((ad) => (
+                <AdCard key={ad._id} ad={ad} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
         {posts && posts.length > 0 && (
